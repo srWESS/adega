@@ -521,10 +521,8 @@ async function handleCheckout(event) {
                 `Link para o PDF do pedido: ${pdfUrl}\n\n` +
                 `${deliveryMethod === 'entrega' ? '_Por favor, confirme a entrega!_' : '_Por favor, avise quando estiver pronto para retirada!_'}`;
 
-    // Open WhatsApp with message (add small delay for Safari compatibility)
-    setTimeout(() => {
-        window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
-    }, 100);
+    // Open WhatsApp with message
+    window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
 
     // Alert sobre o PDF
     alert('O PDF do pedido foi baixado automaticamente. O link para o PDF foi incluído na mensagem do WhatsApp. Envie a mensagem agora, a página será redirecionada em 1 minuto.');
