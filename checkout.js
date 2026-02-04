@@ -524,8 +524,10 @@ async function handleCheckout(event) {
                 `Link para o PDF do pedido: ${pdfUrl}\n\n` +
                 `${deliveryMethod === 'entrega' ? '_Por favor, confirme a entrega!_' : '_Por favor, avise quando estiver pronto para retirada!_'}`;
 
-    // Open WhatsApp with message
-    window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
+    // Open WhatsApp with message (add small delay for Safari compatibility)
+    setTimeout(() => {
+        window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
+    }, 100);
     // Redirect to main page after 60 seconds
     setTimeout(() => window.location.href = 'index.html', 60000);
 }
