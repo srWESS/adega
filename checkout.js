@@ -500,9 +500,6 @@ async function handleCheckout(event) {
     // Clear cart after order
     localStorage.removeItem('cart');
 
-    // Alert sobre o PDF
-    alert('O PDF do pedido foi baixado automaticamente. O link para o PDF foi incluído na mensagem do WhatsApp. Envie a mensagem agora, a página será redirecionada em 1 minuto.');
-
     // Construir mensagem do WhatsApp
     let addressInfo = '';
     if (deliveryMethod === 'entrega') {
@@ -528,6 +525,9 @@ async function handleCheckout(event) {
     setTimeout(() => {
         window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
     }, 100);
+
+    // Alert sobre o PDF
+    alert('O PDF do pedido foi baixado automaticamente. O link para o PDF foi incluído na mensagem do WhatsApp. Envie a mensagem agora, a página será redirecionada em 1 minuto.');
     // Redirect to main page after 60 seconds
     setTimeout(() => window.location.href = 'index.html', 60000);
 }
