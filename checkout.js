@@ -500,26 +500,21 @@ async function handleCheckout(event) {
     // Clear cart after order
     localStorage.removeItem('cart');
 
-    // Construir mensagem do WhatsApp
+    // Construir mensagem do WhatsApp (encurtada para compatibilidade)
     let addressInfo = '';
     if (deliveryMethod === 'entrega') {
-        addressInfo = `\nCEP: ${cep}\nEndereço: ${address}, ${number}`;
+        addressInfo = `\nEndereço: ${address}, ${number}`;
     }
-
-    const orderItems = cart.map(item => `* ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}`).join('\n');
 
     const msg = `*NOVO PEDIDO - SUA ADEGA*\n\n` +
                 `Cliente: ${name}\n` +
                 `Telefone: ${phone}\n` +
-                `Método de Entrega: ${deliveryMethod === 'entrega' ? 'Entrega' : 'Retirar na Loja'}` +
+                `Entrega: ${deliveryMethod === 'entrega' ? 'Sim' : 'Retirar na Loja'}` +
                 addressInfo + `\n` +
                 `Pagamento: ${payment}\n` +
-                (notes ? `Observações: ${notes}\n\n` : '\n') +
-                `PEDIDO:\n${orderItems}\n\n` +
-                `Frete: R$ ${currentShippingCost.toFixed(2).replace('.', ',')}\n` +
                 `Total: R$ ${total.toFixed(2).replace('.', ',')}\n` +
-                `Link para o PDF do pedido: ${pdfUrl}\n\n` +
-                `${deliveryMethod === 'entrega' ? '_Por favor, confirme a entrega!_' : '_Por favor, avise quando estiver pronto para retirada!_'}`;
+                `Ver detalhes no PDF: ${pdfUrl}\n\n` +
+                `${deliveryMethod === 'entrega' ? 'Confirme a entrega!' : 'Avise quando pronto!'}`;
 
     // Open WhatsApp with message
     window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
