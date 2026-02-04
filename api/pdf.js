@@ -22,8 +22,21 @@ export default async function handler(req, res) {
       return res.status(410).json({ error: 'Link expired' });
     }
 
-    // Redirect to blob URL
-    res.redirect(blobUrl);
+    // Fetch the PDF from blob URL
+    const response = await fetch(blobUrl);
+    if (!response.ok) {
+      throw new Error('Failed to fetch PDF from blob');
+    }
+
+    const buffer = await response.arrayBuffer();
+
+    // Set headers for download
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="pedido.pdf"');
+    res.setHeader('Content-Length', buffer.byteLength);
+
+    // Send the PDF
+    res.send(Buffer.from(buffer));
 
   } catch (error) {
     console.error('Error serving PDF:', error);
