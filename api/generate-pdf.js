@@ -43,13 +43,13 @@ export default async function handler(req, res) {
 
     // Customer Info
     doc.fontSize(12).font('Helvetica-Bold');
-    doc.text('Dados do Cliente', 20, 60);
+    doc.text('Dados do Cliente', 20, 70);
     doc.font('Helvetica');
-    doc.text(`Nome: ${name}`, 20, 75);
-    doc.text(`Telefone: ${phone}`, 20, 90);
-    doc.text(`Método de Entrega: ${deliveryMethod === 'entrega' ? 'Entrega' : 'Retirar na Loja'}`, 20, 105);
+    doc.text(`Nome: ${name}`, 20, 90);
+    doc.text(`Telefone: ${phone}`, 20, 110);
+    doc.text(`Método de Entrega: ${deliveryMethod === 'entrega' ? 'Entrega' : 'Retirar na Loja'}`, 20, 130);
 
-    let y = 120;
+    let y = 150;
     if (deliveryMethod === 'entrega') {
       doc.text(`CEP: ${cep}`, 20, y);
       y += 15;
