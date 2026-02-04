@@ -45,53 +45,53 @@ export default async function handler(req, res) {
     doc.fontSize(12).font('Helvetica-Bold');
     doc.text('Dados do Cliente', 20, 60);
     doc.font('Helvetica');
-    doc.text(`Nome: ${name}`, 20, 70);
-    doc.text(`Telefone: ${phone}`, 20, 80);
-    doc.text(`Método de Entrega: ${deliveryMethod === 'entrega' ? 'Entrega' : 'Retirar na Loja'}`, 20, 90);
+    doc.text(`Nome: ${name}`, 20, 75);
+    doc.text(`Telefone: ${phone}`, 20, 90);
+    doc.text(`Método de Entrega: ${deliveryMethod === 'entrega' ? 'Entrega' : 'Retirar na Loja'}`, 20, 105);
 
-    let y = 100;
+    let y = 120;
     if (deliveryMethod === 'entrega') {
       doc.text(`CEP: ${cep}`, 20, y);
-      y += 10;
+      y += 15;
       doc.text(`Endereço: ${address}, ${number}`, 20, y);
-      y += 10;
+      y += 15;
       doc.text(`Frete: R$ ${shippingCost.toFixed(2).replace('.', ',')}`, 20, y);
-      y += 10;
+      y += 15;
     }
     doc.text(`Forma de Pagamento: ${payment}`, 20, y);
-    y += 10;
+    y += 15;
     if (notes) {
       doc.text(`Observações: ${notes}`, 20, y);
-      y += 10;
+      y += 15;
     }
 
     // Items Header
-    y += 10;
+    y += 15;
     doc.font('Helvetica-Bold');
     doc.text('Itens do Pedido', 20, y);
     doc.moveTo(20, y + 2).lineTo(580, y + 2).stroke();
-    y += 10;
+    y += 15;
 
     // Items
     doc.font('Helvetica');
     cart.forEach(item => {
       doc.text(`${item.quantity}x ${item.name}`, 20, y);
       doc.text(`R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}`, 0, y, { align: 'right' });
-      y += 10;
+      y += 15;
     });
 
     // Total
-    y += 10;
+    y += 15;
     doc.moveTo(20, y).lineTo(580, y).stroke();
-    y += 10;
+    y += 15;
     doc.font('Helvetica-Bold').fontSize(14);
     doc.text(`Total: R$ ${total.toFixed(2).replace('.', ',')}`, 0, y, { align: 'right' });
 
     // Footer
-    y += 20;
+    y += 25;
     doc.fontSize(10).font('Helvetica-Oblique').fillColor('gray');
     doc.text('Obrigado pela sua compra! Sua Adega', 0, y, { align: 'center' });
-    doc.text('Contato: (11) 9199-1854-713', 0, y + 10, { align: 'center' });
+    doc.text('Contato: (11) 9199-1854-713', 0, y + 15, { align: 'center' });
 
     doc.end();
 
