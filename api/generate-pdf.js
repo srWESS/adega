@@ -1,7 +1,7 @@
-import PDFDocument from 'pdfkit';
-import { put } from '@vercel/blob';
-import { kv } from '@vercel/kv';
-import { randomBytes } from 'crypto';
+const PDFDocument = require('pdfkit');
+const { put } = require('@vercel/blob');
+const { kv } = require('@vercel/kv');
+const { randomBytes } = require('crypto');
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
