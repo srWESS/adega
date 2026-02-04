@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "pdfkit": "^0.13.0",
-    "@vercel/blob": "^0.23.3",
-    "@vercel/kv": "^1.0.1"
+    "@vercel/blob": "^0.23.3"
   },
   "devDependencies": {},
   "keywords": ["ecommerce", "pdf", "vercel", "serverless"],
