@@ -1,0 +1,20 @@
+{
+  "name": "adegas-site",
+  "version": "1.0.0",
+  "description": "Site de e-commerce para Adega com geração de PDF serverless",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "pdfkit": "^0.13.0",
+    "@vercel/blob": "^0.5.1",
+    "@vercel/kv": "^0.2.1"
+  },
+  "devDependencies": {},
+  "keywords": ["ecommerce", "pdf", "vercel", "serverless"],
+  "author": "Sua Adega",
+  "license": "MIT"
+}
