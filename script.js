@@ -25,15 +25,15 @@ function deleteCookie(name) {
 }
 
 const products = [
-    { id: 1, name: "Combo Jack Daniels 1L + 4 RedBull", price: 189.90, category: "combos", image: "Combo Jack Daniels 1L + 4 TNT.jpg", description: "Combo especial com Whisky Jack Daniels 1L e 4 latas de energético RedBull. Perfeito para noites animadas." },
+    { id: 1, name: "Combo Jack Daniels 1L + 4 RedBull", price: 189.90, category: "combos", image: "combo-jack-daniels.jpg", description: "Combo especial com Whisky Jack Daniels 1L e 4 latas de energético RedBull. Perfeito para noites animadas." },
     { id: 2, name: "Heineken 330ml Pack 6un", price: 39.90, category: "cervejas", image: "Heineken 330ml Pack 6un.jpg", description: "Cerveja premium Heineken em pack de 6 unidades de 330ml. Sabor único e refrescante." },
     { id: 3, name: "Vodka Smirnoff 998ml", price: 42.00, category: "destilados", image: "Vodka Smirnoff 998ml.jpg", description: "Vodka Smirnoff 998ml, ideal para drinks e coquetéis. Sabor suave e versátil." },
     { id: 4, name: "Narguilé Amazon Pride", price: 249.00, category: "tabacaria", image: "Narguilé Amazon Pride.jpg", description: "Narguilé Amazon Pride de alta qualidade, perfeito para sessões relaxantes." },
-    { id: 5, name: "Vinho Casillero del Diablo 750ml", price: 54.90, category: "vinhos", image: "Vinho Casillero del Diablo 750m.jpg", description: "Vinho tinto Casillero del Diablo Cabernet Sauvignon 750ml. Elegante e encorpado." },
-    { id: 6, name: "Combo Vodka Absolut 1L + 4 Red Bull", price: 199.90, category: "combos", image: "Combo Vodka Absolut 1L + 4 Red.jpg", description: "Combo com Vodka Absolut 1L e 4 latas de Red Bull. Energia e diversão garantidas." },
+    { id: 5, name: "Vinho Casillero del Diablo 750ml", price: 54.90, category: "vinhos", image: "vinho-casillero-del-diablo.jpg", description: "Vinho tinto Casillero del Diablo Cabernet Sauvignon 750ml. Elegante e encorpado." },
+    { id: 6, name: "Combo Vodka Absolut 1L + 4 Red Bull", price: 199.90, category: "combos", image: "combo-vodka-absolut.jpg", description: "Combo com Vodka Absolut 1L e 4 latas de Red Bull. Energia e diversão garantidas." },
     { id: 7, name: "Kit Campari Garibaldi - 1 Campari 998ml + 1 Suco Nectar Tial Laranja 1000ml", price: 89.90, category: "combos", image: "Kit Campari Garibaldi.jpg", description: "Kit com Campari 998ml e suco de laranja Nectar Tial 1000ml. Perfeito para preparar drinks Garibaldi." },
-    { id: 8, name: "Whisky White Horse 1 Litro + Energético Red Bull Energy Drink 250ml Pack com 6 Unidades", price: 129.90, category: "combos", image: "Combo Whisky + Energéticos.jpg", description: "Combo com Whisky White Horse 1L e 6 latas de Red Bull 250ml. Energia para a noite toda." },
-    { id: 9, name: "Brahma 350ml Pack 6", price: 29.90, category: "cervejas", image: "rahma 350ml Pack 6.jpg", description: "Cerveja Brahma em pack de 6 unidades de 350ml. Clássica e refrescante." },
+    { id: 8, name: "Whisky White Horse 1 Litro + Energético Red Bull Energy Drink 250ml Pack com 6 Unidades", price: 129.90, category: "combos", image: "combo-whisky-energeticos.jpg", description: "Combo com Whisky White Horse 1L e 6 latas de Red Bull 250ml. Energia para a noite toda." },
+    { id: 9, name: "Brahma 350ml Pack 6", price: 29.90, category: "cervejas", image: "brahma-pack-6.jpg", description: "Cerveja Brahma em pack de 6 unidades de 350ml. Clássica e refrescante." },
     { id: 10, name: "Skol 269ml Pack 12", price: 34.90, category: "cervejas", image: "Skol 269ml Pack 12.jpg", description: "Cerveja Skol em pack de 12 unidades de 269ml. Leve e acessível." },
     { id: 11, name: "Stella Artois 330ml Pack 6", price: 49.90, category: "cervejas", image: "Stella Artois 330ml Pack 6.jpg", description: "Cerveja premium Stella Artois em pack de 6 unidades. Sabor europeu." },
     { id: 12, name: "Whisky Johnnie Walker Red Label 1L", price: 159.90, category: "destilados", image: "Whisky Johnnie Walker Red Label 1L.jpg", description: "Whisky Johnnie Walker Red Label 1L. Blend suave e acessível." },
@@ -44,8 +44,8 @@ const products = [
     { id: 17, name: "Alumínio para Narguilé 10m", price: 9.90, category: "tabacaria", image: "Alumínio para Narguilé 10m.jpg", description: "Folha de alumínio para narguilé 10 metros. Essencial para sessões." },
     { id: 18, name: "Vinho Miolo Cabernet Sauvignon 750ml", price: 59.90, category: "vinhos", image: "Vinho Miolo Cabernet Sauvignon 750ml.jpg", description: "Vinho tinto Miolo Cabernet Sauvignon 750ml. Frutado e equilibrado." },
     { id: 19, name: "Vinho Salton Merlot 750ml", price: 49.90, category: "vinhos", image: "Vinho Salton Merlot 750ml.jpg", description: "Vinho tinto Salton Merlot 750ml. Suave e acessível." },
-    { id: 20, name: "Vinho Concha y Toro Sauvignon Blanc 750ml", price: 69.90, category: "vinhos", image: "Vinho Concha y Toro Sauvignon Blanck.jpg", description: "Vinho branco Concha y Toro Sauvignon Blanc 750ml. Fresco e cítrico." },
-    { id: 21, name: "Whisky + Combo Job 1L", price: 19.90, category: "mansao-maromba", image: "Whisky + Combo Job 1L.jpg", description: "Whisky Job 1L com combo especial. Sabor intenso e marcante." },
+    { id: 20, name: "Vinho Concha y Toro Sauvignon Blanc 750ml", price: 69.90, category: "vinhos", image: "vinho-concha-y-toro.jpg", description: "Vinho branco Concha y Toro Sauvignon Blanc 750ml. Fresco e cítrico." },
+    { id: 21, name: "Whisky + Combo Job 1L", price: 19.90, category: "mansao-maromba", image: "whisky-combo-job.jpg", description: "Whisky Job 1L com combo especial. Sabor intenso e marcante." },
     { id: 22, name: "Gin Go Bells 1L", price: 19.90, category: "mansao-maromba", image: "Gin Go Bells 1L.jpg", description: "Gin Go Bells 1L. Refresco cítrico e elegante." },
     { id: 23, name: "Whisky Colors Berry 1L", price: 19.90, category: "mansao-maromba", image: "Whisky Colors Berry 1L.jpg", description: "Whisky Colors Berry 1L. Notas frutadas e suaves." },
     { id: 24, name: "Gin Tigrinho 1L", price: 19.90, category: "mansao-maromba", image: "Gin Tigrinho 1L.jpg", description: "Gin Tigrinho 1L. Clássico com toque especial." }

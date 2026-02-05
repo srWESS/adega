@@ -2,29 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/generate-pdf.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/pdf.js",
-      "use": "@vercel/node"
-    },
-    {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "."
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/generate-pdf",
-      "dest": "/api/generate-pdf.js"
-    },
-    {
-      "src": "/api/pdf",
-      "dest": "/api/pdf.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",

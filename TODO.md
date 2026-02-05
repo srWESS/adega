@@ -1,4 +1,4 @@
 - [x] Modificar api/generate-pdf.js para usar KV e retornar link tokenizado
 - [x] Ajustar checkout.js para remover alerta enganoso sobre download automático
-- [x] Fazer deploy no Vercel (deploy em andamento, aguardando confirmação do usuário)
+- [x] Fazer deploy no Vercel (código committado e pushado para GitHub, deploy automático em andamento)
 - [ ] Testar o download no Safari

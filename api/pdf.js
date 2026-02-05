@@ -1,27 +1,11 @@
-const { kv } = require('@vercel/kv');
-
 export default async function handler(req, res) {
-  const { token } = req.query;
+  const { blobUrl } = req.query;
 
-  if (!token) {
-    return res.status(400).json({ error: 'Token required' });
+  if (!blobUrl) {
+    return res.status(400).json({ error: 'Blob URL required' });
   }
 
   try {
-    const data = await kv.get(`pdf:${token}`);
-
-    if (!data) {
-      return res.status(404).json({ error: 'Link expired or invalid' });
-    }
-
-    const { blobUrl, expiresAt } = JSON.parse(data);
-
-    if (Date.now() > expiresAt) {
-      // Delete expired entry
-      await kv.del(`pdf:${token}`);
-      return res.status(410).json({ error: 'Link expired' });
-    }
-
     // Fetch the PDF from blob URL
     const response = await fetch(blobUrl);
     if (!response.ok) {
@@ -30,9 +14,9 @@ export default async function handler(req, res) {
 
     const buffer = await response.arrayBuffer();
 
-    // Set headers for download
+    // Set headers for inline display
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename="pedido.pdf"');
+    res.setHeader('Content-Disposition', 'inline; filename="pedido.pdf"');
     res.setHeader('Content-Length', buffer.byteLength);
 
     // Send the PDF
