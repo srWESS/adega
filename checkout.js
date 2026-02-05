@@ -525,7 +525,7 @@ async function handleCheckout(event) {
     window.open(`https://wa.me/5511991854713?text=${encodeURIComponent(msg)}`, '_blank');
 
     // Alert sobre o PDF
-    alert('O PDF do pedido foi baixado automaticamente. O link para o PDF foi incluído na mensagem do WhatsApp. Envie a mensagem agora, a página será redirecionada em 1 minuto.');
+    alert('O link para o PDF foi incluído na mensagem do WhatsApp. Envie a mensagem agora, a página será redirecionada em 1 minuto.');
     // Redirect to main page after 60 seconds
     setTimeout(() => window.location.href = 'index.html', 60000);
 }

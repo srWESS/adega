@@ -1,5 +1,7 @@
 const PDFDocument = require('pdfkit');
 const { put } = require('@vercel/blob');
+const { kv } = require('@vercel/kv');
+const crypto = require('crypto');
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -106,8 +108,17 @@ export default async function handler(req, res) {
       contentType: 'application/pdf'
     });
 
-    // Return the public link directly (permanent link due to free tier limitations)
-    res.status(200).json({ link: blob.url });
+    // Generate token and store in KV
+    const token = crypto.randomUUID();
+    const data = {
+      blobUrl: blob.url,
+      expiresAt: Date.now() + 24 * 60 * 60 * 1000 // 24 hours
+    };
+    await kv.set(`pdf:${token}`, JSON.stringify(data));
+
+    // Return the token-based link
+    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+    res.status(200).json({ link: `${baseUrl}/api/pdf?token=${token}` });
 
   } catch (error) {
     console.error('Error generating PDF:', error);
